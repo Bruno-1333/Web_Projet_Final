@@ -1,0 +1,45 @@
+body {
+    /* background-image: url('https://url-da-sua-imagem-de-tecnologia-aqui');*/
+    background-color: black;
+    background-size: cover;
+    color: black;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-top: 30px;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 30px;
+    width: 80%;
+    max-width: 800px;
+}
+
+#user-list {
+    /*background-image: url('tela_computador.jpg');*/
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    padding: 20px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btn-primary {
+    background-color: black;
+    border-color: black;
+}
+.btn-primary:hover {
+    background-color: silver;
+    border-color: silver;
+}

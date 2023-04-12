@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Page principale</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="Envoie.js"></script>
+    <link rel="stylesheet" href="Utilisateur.css">
+    <link rel="stylesheet" href="Envoie.css">
+
+
+</head>
+<body>
+<div class="container">
+    <br><br><br>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConnexion">Se connecter</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalInscription">Nouvel utilisateur</button>
+</div>
+<!-- Modal Se connecter -->
+<div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="modalConnexionLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalConnexionLabel">Se connecter</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formConnexion">
+                    <div class="form-group">
+                        <label for="login">Identifiant</label>
+                        <input type="text" class="form-control" id="login" name="login" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Mot de passe</label>
+                        <input type="password" class="form-control" id="senha" name="senha" required>
+                    </div>
+                </form>
+                <div id="erreurConnexion" class="alert alert-danger" style="display:none;">Identifiant ou mot de passe incorrects</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" id="btnConnexion">Se connecter</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Inscription -->
+<div class="modal fade" id="modalInscription" tabindex="-1" role="dialog" aria-labelledby="modalInscriptionLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalInscriptionLabel">Nouvel utilisateur</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formInscription">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input type="nom" class="form-control" id="nom" name="nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prenom</label>
+                        <input type="prenom" class="form-control" id="prenom" name="prenom">
+                    </div>
+                    <!-- <div class="form-group">
+                       <label for="telefone">Téléphone</label>
+                       <input type="text" class="form-control" id="telefone" name="telefone" required pattern="[0-9]{10,11}">
+                     </div>
+
+                     <div class="form-group">
+                       <label for="usuario">Utilisateur</label>
+                       <input type="text" class="form-control" id="usuario" name="usuario" required>
+                     </div>
+                     <div class="form-group">
+                       <label for="senhaCad">Mot de passe</label>
+                       <input type="password" class="form-control" id="senhaCad" name="senhaCad" required>
+                     </div>
+                     <div class="form-group">
+                       <label for="confSenha">Confirmation du mot de passe</label>
+                       <input type="password" class="form-control" id="confSenha" name="confSenha" required>
+                     </div> -->
+
+
+
+                    <div id="erreurInscription" class="alert alert-danger" style="display:none;"></div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary" id="btnInscription" onclick="envoi()">Enregistrer</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div></body>
