@@ -2,9 +2,9 @@ function envoi(){
     event.preventDefault(); // Impede o formulário de ser submetido
 
     //POST : Envoyer des données au serveur JSON
-    alert(JSON.stringify({ "username": $("#username").val(), "email" : $("#email").val(),"nom" : $("#nom").val(),"prenom" : $("#prenom").val()}));
+    alert(JSON.stringify({ "username": $("#username").val(),"motDePasse": $("#motDePasse").val() ,"confMotDePasse": $("#confMotDePasse").val() ,"email" : $("#email").val(),"nom" : $("#nom").val(),"prenom" : $("#prenom").val()}));
     $.ajax('https://641b4a099b82ded29d4f0dfe.mockapi.io/Users', {
-        data : JSON.stringify({ "username": $("#username").val(), "email" : $("#email").val(),"nom" : $("#nom").val(),"prenom" : $("#prenom").val()}),
+        data : JSON.stringify({ "username": $("#username").val(),"motDePasse": $("#motDePasse").val() ,"confMotDePasse": $("#confMotDePasse").val() ,"email" : $("#email").val(),"nom" : $("#nom").val(),"prenom" : $("#prenom").val()}),
         contentType : 'application/json',
         type : 'POST'
     }).catch(function (error){
@@ -12,17 +12,6 @@ function envoi(){
     });
 
 };
-function validerConnexion() {
-    var login = $("#login").val();
-    var motDePasse = $("#senha").val();
-// Valider le login et le mot de passe ici
-    if (login === "usuario" && motDePasse === "123") {
-        return true;
-    } else {
-        $("#erreurConnexion").show();
-        return false;
-    }
-}
 
 // Fonction pour nettoyer les champs du modal d'inscription
 function nettoyerChamps() {
@@ -53,12 +42,12 @@ function inscrireUtilisateur() {
         url: 'https://641b4a099b82ded29d4f0dfe.mockapi.io/Users',
         method: "POST",
         data: {
+            utilisateur: $("#utilisateur").val(),
+            motDePasse: $("#motDePasseInscription").val(),
+            email: $("#email").val(),
             nom: $("#nom").val,
             prenom: $("#prenom").val(),
-            telephone: $("#telephone").val(),
-            email: $("#email").val(),
-            utilisateur: $("#utilisateur").val(),
-            motDePasse: $("#motDePasseInscription").val()
+
         },
         success: function(data) {
             console.log(data);
@@ -80,7 +69,6 @@ $(document).ready(function() {
         }
     });
 
-
 // Événement de clic sur le bouton d'inscription
     $("#btnInscription").click(function() {
         if (validerMotDePasse()) {
@@ -89,6 +77,54 @@ $(document).ready(function() {
     });
 
 // Événement de clic sur le bouton annuler dans le modal d'inscription
+    $("#modalInscription").on("hidden.bs.modal", function () {
+        nettoyerChamps();
+    });
+});
+
+function validerConnexion() {
+    var login = $("#login").val();
+    var motDePasse = $("#senha").val();
+
+    // Requête AJAX pour vérifier l'identifiant et le mot de passe avec MockAPI
+    $.ajax({
+        url: 'https://641b4a099b82ded29d4f0dfe.mockapi.io/Users',
+        method: "GET",
+        success: function(data) {
+            var utilisateurTrouve = false;
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].username === login && data[i].motDePasse === motDePasse) {
+                    utilisateurTrouve = true;
+                    break;
+                }
+            }
+            if (utilisateurTrouve) {
+                window.location.href = "Utilisateur.html";
+            } else {
+                $("#erreurConnexion").html("Identifiant ou mot de passe incorrect").show();
+            }
+        },
+        error: function(error) {
+            console.log(error);
+            $("#erreurConnexion").html("Erreur lors de la vérification des identifiants").show();
+        }
+    });
+}
+
+$(document).ready(function() {
+    // Événement de clic sur le bouton de connexion
+    $("#btnConnexion").click(function() {
+        validerConnexion();
+    });
+
+    // Événement de clic sur le bouton d'inscription
+    $("#btnInscription").click(function() {
+        if (validerMotDePasse()) {
+            inscrireUtilisateur();
+        }
+    });
+
+    // Événement de clic sur le bouton annuler dans le modal d'inscription
     $("#modalInscription").on("hidden.bs.modal", function () {
         nettoyerChamps();
     });

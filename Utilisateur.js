@@ -10,6 +10,18 @@ function afficher() {
         });
 }
 
+function validerMotDePasse() {
+    var motDePasse = $("#motDePasse").val();
+    var confMotDePasse = $("#confMotDePasse").val();
+    if (motDePasse !== confMotDePasse) {
+        $("#erreurInscription").html("Les mots de passe ne correspondent pas").show();
+        return false;
+    } else {
+        $("#erreurInscription").hide();
+        return true;
+    }
+}
+
 $("form").submit(function (event){
     event.preventDefault(); // Impede o formulário de ser submetido
 
@@ -62,6 +74,8 @@ function afficherHtml() {
             }
         });
 }
+
+
 
 
 afficherHtml();

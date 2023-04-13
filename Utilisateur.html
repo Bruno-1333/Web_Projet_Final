@@ -17,10 +17,19 @@
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" name="username">
         </div>
-        <div class="form-group">
 
+        <div class="form-group">
+            <label for="motDePasse">Mot de passe</label>
+            <input type="password" class="form-control" id="motDePasse" name="motDePasse" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" title="Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, une minuscule et un chiffre." required>
+        </div>
+        <div class="form-group">
+            <label for="confMotDePasse">Confirmation du mot de passe</label>
+            <input type="password" class="form-control" id="confMotDePasse" name="confMotDePasse" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" title="Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, une minuscule et un chiffre." required>
+        </div>
+
+        <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email">
+            <input type="email" class="form-control" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
 
             <label for="nom">Nom</label>
             <input type="nom" class="form-control" id="nom" name="nom">
