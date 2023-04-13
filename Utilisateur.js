@@ -31,6 +31,9 @@ $("form").submit(function (event){
         data : JSON.stringify({ "username": $("#username").val(), "email" : $("#email").val(),"nom" : $("#nom").val(),"prenom" : $("#prenom").val()}),
         contentType : 'application/json',
         type : 'POST'
+    }).done(function () {
+        // Rafraîchir l'affichage automatiquement après avoir ajouté un nouvel utilisateur
+        afficherHtml();
     }).catch(function (error){
         console.log(error.message);
     });
@@ -74,8 +77,6 @@ function afficherHtml() {
             }
         });
 }
-
-
 
 
 afficherHtml();
